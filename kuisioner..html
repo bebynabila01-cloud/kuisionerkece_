@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Form Member — Pastel Modern</title>
+  <meta name="color-scheme" content="light">
+  <style>
+    :root{
+      --bg1:#FDE1E3;  /* pink pastel */
+      --bg2:#E7F0FF;  /* biru lembut */
+      --bg3:#FFF7D6;  /* krem pastel */
+      --card:#ffffff;
+      --text:#2E2F35;
+      --muted:#6E6E77;
+      --primary:#FF9AA2;   /* tombol */
+      --primary-2:#FEC3A6; /* hover */
+      --ring: rgba(255,154,162,.35);
+      --shadow: 0 18px 40px rgba(20,20,40,.08);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3)) fixed;
+      background-size: 160% 160%;
+      animation:bgMove 16s ease-in-out infinite;
+      display:flex; align-items:flex-start; justify-content:center;
+      padding: 32px 18px;
+    }
+    @keyframes bgMove{
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+    }
+    .wrap{width: min(880px, 100%);}
+    .card{
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border:1px solid rgba(255,255,255,.6);
+      backdrop-filter: blur(8px);
+      padding: 22px;
+    }
+    header.card{margin-bottom:16px; position:relative; overflow:hidden}
+    header h1{margin:0 0 6px; font-size: clamp(1.35rem, 1.1rem + 1.2vw, 2rem); color:#3A2F55}
+    header p{margin:0; color:var(--muted); line-height:1.6}
+    .badge{
+      display:inline-flex; align-items:center; gap:6px;
+      background:#fff2; border:1px dashed #e8d9ff; padding:6px 10px; border-radius:999px;
+      font-size:.85rem; color:#6b5a99; margin-top:8px;
+    }
+
+    form.card{margin-bottom:14px}
+    .group{margin-bottom:16px}
+    .group legend{font-weight:700; margin-bottom:6px; color:#3A2F55}
+    .field{margin:10px 0}
+    .label{display:block; font-weight:600; margin-bottom:8px}
+    .hint{font-weight:400; color:var(--muted)}
+
+    input[type="text"], input[type="tel"], input[type="date"], textarea{
+      width:100%; padding:14px 16px; border-radius:12px;
+      border:1.2px solid #e5e8f1; background:#fff; color:#111827;
+      outline:none; transition:.18s ease;
+      font-size:1rem;
+    }
+    input[type="date"]{padding:12px 14px}
+    textarea{min-height:110px; resize:vertical}
+    input:focus, textarea:focus{border-color:var(--primary); box-shadow:0 0 0 6px var(--ring)}
+
+    .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+    @media (max-width:720px){ .grid-2{grid-template-columns:1fr} }
+
+    .choices{display:grid; gap:10px; grid-template-columns:1fr 1fr}
+    @media (max-width:720px){ .choices{grid-template-columns:1fr} }
+
+    .opt{
+      display:flex; align-items:center; gap:10px;
+      padding:10px 12px; border:1px solid #edf0f7; border-radius:12px;
+      background:#fafbff; transition:.15s ease; cursor:pointer; user-select:none;
+    }
+    .opt:hover{box-shadow:0 10px 20px rgba(0,0,0,.06)}
+    input[type="checkbox"], input[type="radio"]{
+      appearance:none; width:18px; height:18px; border-radius:6px;
+      border:1.8px solid #cfd6e6; display:inline-grid; place-items:center; position:relative;
+      background:#fff; transition:.18s ease;
+    }
+    input[type="radio"]{border-radius:50%}
+    input[type="checkbox"]::after{content:''; width:10px; height:10px; border-radius:4px; transform:scale(0); transition:.18s ease; background:#FFB3C1}
+    input[type="radio"]::after{content:''; width:9px; height:9px; border-radius:50%; transform:scale(0); transition:.18s ease; background:#FFD1DC}
+    input[type="checkbox"]:checked{border-color:#FFB3C1}
+    input[type="radio"]:checked{border-color:#FFD1DC}
+    input[type="checkbox"]:checked::after, input[type="radio"]:checked::after{transform:scale(1)}
+
+    .actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:8px}
+    .btn{
+      background: var(--primary); color:#fff; border:none; padding:12px 18px; border-radius:14px;
+      font-weight:700; cursor:pointer; box-shadow: var(--shadow); transition:.18s ease;
+    }
+    .btn:hover{transform: translateY(-1px); background: var(--primary-2)}
+
+    .closing.card{
+      text-align:center; background:rgba(255,255,255,.7);
+      border:1px dashed #ffdbe0;
+    }
+    .closing h3{margin:0 0 6px; color:#6b5a99}
+    .closing p{margin:0; color:#6E6E77}
+
+    footer{height:0; overflow:hidden} /* footer kosong */
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="card">
+      <h1>Lu udah cakep, sekarang tinggal jadi member!</h1>
+      <p>Tapi sebelum itu, isi form kece ini dulu yaa ✍️ santai aja, nggak bakal bikin otak ngebul 🤯
+      Jawab sejujur-jujurnya, se-gabut-gabutnya juga nggak apa-apa kok. <b>Let’s go, bestieee! 🚀✨</b></p>
+      <div class="badge">Form vibe: pastel • modern • responsif</div>
+    </header>
+
+    <form id="formMember" class="card">
+      <fieldset class="group">
+        <legend>🎉 Let's kenalan dulu dong!</legend>
+
+        <div class="field">
+          <label class="label" for="nama">1. Siapa nama lengkap kamu, beb? <span class="hint">(Jangan pake nama alter ya wkwk)</span></label>
+          <input id="nama" name="nama" type="text" placeholder="Contoh: Beby Aurelia" required>
+        </div>
+
+        <div class="grid-2">
+          <div class="field">
+            <label class="label" for="panggilan">2. Nama panggilan yang paling kamu suka? <span class="hint">(biar sapa-nya pas ✨)</span></label>
+            <input id="panggilan" name="panggilan" type="text" placeholder="Contoh: Beby / Bey">
+          </div>
+          <div class="field">
+            <label class="label" for="lahir">3. Kapan kamu lahir ke dunia yang penuh gaya ini? <span class="hint">(tanggal aja, tahun opsional 🤫)</span></label>
+            <input id="lahir" name="lahir" type="text" placeholder="Contoh: 14 Februari">
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="field">
+            <label class="label" for="kota">4. Asal kamu dari kota mana nih? <span class="hint">(biar tau bumi dipijaknya)</span></label>
+            <input id="kota" name="kota" type="text" placeholder="Contoh: Jakarta / Malang / Makassar">
+          </div>
+          <div class="field">
+            <label class="label" for="wa">5. No WA aktif dong <span class="hint">(janji gak spam 🫶)</span></label>
+            <input id="wa" name="wa" type="tel" inputmode="numeric" placeholder="08xxxxxxxxxx">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="ig">6. IG kamu apa? <span class="hint">(kalau gak malu jadi spotlight 😎)</span></label>
+          <input id="ig" name="ig" type="text" placeholder="@username">
+        </div>
+      </fieldset>
+
+      <fieldset class="group">
+        <legend>👕 Ngulik dikit soal gaya kamu nih...</legend>
+
+        <div class="field">
+          <span class="label">7. Style kamu tuh biasanya kayak gimana?</span>
+          <div class="choices">
+            <label class="opt"><input type="checkbox" name="style" value="Kaos, celana, gas"><span>Kaos, celana, gas</span></label>
+            <label class="opt"><input type="checkbox" name="style" value="Streetstyle ala hypebeast/cewek mamba"><span>Streetstyle ala hypebeast/cewek mamba</span></label>
+            <label class="opt"><input type="checkbox" name="style" value="Vintage retro chill"><span>Vintage retro chill</span></label>
+            <label class="opt"><input type="checkbox" name="style" value="Chic & classy"><span>Chic & classy</span></label>
+            <label class="opt"><input type="checkbox" name="style" value="Gaya gue = mood gue"><span>Gaya gue = mood gue</span></label>
+            <label class="opt"><input type="checkbox" name="style" value="Gue belum nemu style, bantuin dong 😭"><span>Gue belum nemu style, bantuin dong 😭</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <span class="label">8. Budget outfit “masih wajar” versi kamu?</span>
+          <div class="choices">
+            <label class="opt"><input type="radio" name="budget" value="Di bawah 50k"><span>Di bawah 50k (tim hemat tapi tetep keren)</span></label>
+            <label class="opt"><input type="radio" name="budget" value="50k–100k"><span>50k – 100k (worth it no debat)</span></label>
+            <label class="opt"><input type="radio" name="budget" value="100k–200k"><span>100k – 200k (asal bahan enak)</span></label>
+            <label class="opt"><input type="radio" name="budget" value="200k–300k"><span>200k – 300k (style = investasi 💅)</span></label>
+            <label class="opt"><input type="radio" name="budget" value="Lebih dari 300k"><span>Lebih dari 300k (ya kali gak gaya 😎)</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <span class="label">9. Isi lemari kamu didominasi sama...</span>
+          <div class="choices">
+            <label class="opt"><input type="checkbox" name="lemari" value="Hoodie & celana santai"><span>Hoodie & celana santai</span></label>
+            <label class="opt"><input type="checkbox" name="lemari" value="Outfit buat nongkrong"><span>Outfit buat nongkrong</span></label>
+            <label class="opt"><input type="checkbox" name="lemari" value="Outfit buat healing"><span>Outfit buat healing</span></label>
+            <label class="opt"><input type="checkbox" name="lemari" value="Outfit buat konten"><span>Outfit buat konten</span></label>
+            <label class="opt"><input type="checkbox" name="lemari" value="Semuanya campur, chaos tapi aesthetic 😅"><span>Semuanya campur, chaos tapi aesthetic 😅</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <span class="label">10. Sebulan belanja baju berapa kali, jujur aja bestie? 😏</span>
+          <div class="choices">
+            <label class="opt"><input type="radio" name="freq" value="Sekali doang, itu juga mikir dulu 7x"><span>Sekali doang, itu juga mikir dulu 7x</span></label>
+            <label class="opt"><input type="radio" name="freq" value="2–3 kali, kalo nemu yang lucu ya gas"><span>2–3 kali, kalo nemu yang lucu ya gas</span></label>
+            <label class="opt"><input type="radio" name="freq" value="Seminggu sekali kayak skincare-an"><span>Seminggu sekali kayak skincare-an</span></label>
+            <label class="opt"><input type="radio" name="freq" value="Lebih dari itu… dompet? Gatau tuh siapa 😅"><span>Lebih dari itu… dompet? Gatau tuh siapa 😅</span></label>
+            <label class="opt"><input type="radio" name="freq" value="Jarang belanja, tapi sekalinya beli langsung kalap"><span>Jarang belanja, tapi sekalinya beli langsung kalap</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <span class="label">11. Kenapa pengen join jadi member? Spill jujur aja:</span>
+          <div class="choices">
+            <label class="opt"><input type="checkbox" name="alasan" value="Mau dapet diskon & info kece duluan"><span>Mau dapet diskon & info kece duluan</span></label>
+            <label class="opt"><input type="checkbox" name="alasan" value="Suka ikut event yang vibes-nya dapet"><span>Suka ikut event yang vibes-nya dapet</span></label>
+            <label class="opt"><input type="checkbox" name="alasan" value="Nyari circle yang satu frekuensi"><span>Nyari circle yang satu frekuensi</span></label>
+            <label class="opt"><input type="checkbox" name="alasan" value="Fashion tuh passion"><span>Fashion tuh passion</span></label>
+            <label class="opt"><input type="checkbox" name="alasan" value="Iseng doang, tapi kok nagih"><span>Iseng doang, tapi kok nagih</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <span class="label">12. Event impian lo tuh yang vibes-nya kayak...</span>
+          <div class="choices">
+            <label class="opt"><input type="checkbox" name="event" value="Chill santai ala piknik"><span>Chill santai ala piknik</span></label>
+            <label class="opt"><input type="checkbox" name="event" value="Hype banget, rame, penuh musik"><span>Hype banget, rame, penuh musik</span></label>
+            <label class="opt"><input type="checkbox" name="event" value="Fashion show tapi sambil ngemil"><span>Fashion show tapi sambil ngemil</span></label>
+            <label class="opt"><input type="checkbox" name="event" value="Workshop bareng orang keren"><span>Workshop bareng orang keren</span></label>
+            <label class="opt"><input type="checkbox" name="event" value="Healing tipis-tipis sambil OOTD-an"><span>Healing tipis-tipis sambil OOTD-an</span></label>
+          </div>
+          <div class="field" style="margin-top:10px">
+            <label class="label" for="eventLain">Lainnya (spill dong idenya):</label>
+            <input id="eventLain" name="eventLain" type="text" placeholder="Tulis ide liarmu di sini 🔥">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="ide">💬 Terakhir nih — Kalau kamu bisa bikin event impian, bakal kayak gimana?</label>
+          <textarea id="ide" name="ide" placeholder="Tulis sesuka hati kamu, kita butuh ide liar kamu! 🔥"></textarea>
+        </div>
+      </fieldset>
+
+      <div class="actions">
+        <button class="btn" type="submit">Kirim Jawaban 🚀</button>
+      </div>
+    </form>
+
+    <section class="closing card">
+      <h3>Udah kelar? Goks, kamu emang niat! 🙌</h3>
+      <p>Sekarang tinggal tunggu hal-hal seru dari kita: mulai dari promo, event, sampe kesempatan jadi trendsetter bareng. Kita seneng banget kamu join — let’s grow & glow bareng yaaa ✨</p>
+    </section>
+
+    <footer></footer>
+  </div>
+
+  <script>
+    // Smooth submit (prevent reload)
+    document.getElementById('formMember').addEventListener('submit', function(e){
+      e.preventDefault();
+      const btn = this.querySelector('.btn');
+      const prevText = btn.textContent;
+      btn.textContent = 'Terkirim ✓';
+      btn.disabled = true;
+      setTimeout(()=>{ btn.textContent = prevText; btn.disabled = false; }, 1800);
+    });
+  </script>
+</body>
+</html>
